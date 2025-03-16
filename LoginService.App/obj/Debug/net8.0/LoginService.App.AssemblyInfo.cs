@@ -11,11 +11,11 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("e7267a41-a86c-4065-a9f4-b38316a61bb6")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("1b4730f9-ed2c-42c2-93e4-b49e2cb34158")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("LoginService.App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7e718abb3ca977d48cf254ee6a0732fcee1c508")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+926ad444b2f74c84cec58432280e052565f1e6b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("LoginService.App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LoginService.App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
