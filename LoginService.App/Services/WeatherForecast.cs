@@ -1,4 +1,4 @@
-namespace LoginService.App
+namespace LoginService.App.Services
 {
     public class WeatherForecast
     {

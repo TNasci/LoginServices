@@ -21,16 +21,14 @@ namespace LoginService.App.Data.Seed
                 }
             }
 
-            var adminUser = new ApplicationUser { UserName = "Admin", Email = "admin@exemple.com", Role = "Admin" };
+            var adminUser = new ApplicationUser { UserName = "admin@exemple.com", Email = "admin@exemple.com", Role = "Admin" };
             await CreateUserIfNotExists(userManager, adminUser, "Password!123", "Admin");
 
-            var doctorUser = new ApplicationUser { UserName = "Doctor", Email = "doctor@exemple.com", Role = "Doctor" };
+            var doctorUser = new ApplicationUser { UserName = "doctor@exemple.com", Email = "doctor@exemple.com", Role = "Doctor" };
             await CreateUserIfNotExists(userManager, doctorUser, "Password!123", "Doctor");
 
-            var pacientUser = new ApplicationUser { UserName = "Pacient", Email = "pacient@exemple.com", Role = "Pacient" };
+            var pacientUser = new ApplicationUser { UserName = "pacient@exemple.com", Email = "pacient@exemple.com", Role = "Pacient" };
             await CreateUserIfNotExists(userManager, pacientUser, "Password!123", "Pacient");
-
-
         }
 
         #region Private Method

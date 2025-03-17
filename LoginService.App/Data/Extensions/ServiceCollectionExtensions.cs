@@ -1,4 +1,6 @@
 ﻿using LoginService.App.Models;
+using LoginService.App.Services;
+using LoginService.App.Services.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +19,9 @@ namespace LoginService.App.Data.Extensions
 
             // Configurar Identity
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IEmailService, EmailService>();
 
             // Configura o Authentication via JWT Token
             services.AddAuthentication(options =>

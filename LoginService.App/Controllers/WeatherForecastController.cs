@@ -1,4 +1,8 @@
+using LoginService.App.Models;
+using LoginService.App.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace LoginService.App.Controllers
 {
@@ -19,15 +23,33 @@ namespace LoginService.App.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [Authorize]
+        public IActionResult Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var userRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+
+            if (string.IsNullOrEmpty(userRole))
+            {
+                return Unauthorized(new { Message = "Não foi possível identificar a função do usuário." });
+            }
+
+            string mensagemBoasVindas = userRole switch
+            {
+                "Admin" => "Bem-vindo, Administrador!",
+                "Doctor" => "Bem-vindo, Doutor!",
+                "Pacient" => "Bem-vindo, Paciente!",
+                _ => "Bem-vindo, usuário!"
+            };
+
+            var forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+
+            return Ok(new { Mensagem = mensagemBoasVindas, Previsoes = forecasts });
         }
     }
 }
